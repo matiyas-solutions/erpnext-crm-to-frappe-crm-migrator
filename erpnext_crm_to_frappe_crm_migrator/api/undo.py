@@ -195,6 +195,7 @@ def undo_migration(confirm: str = "") -> dict:
 
 	Guards: every tab locked + ERPNext source rows still exist + `confirm='DELETE'`.
 	"""
+	frappe.only_for("System Manager")
 	frappe.has_permission(SETTINGS_DOCTYPE, "write", throw=True)
 	frappe.has_permission(RUN_DOCTYPE, "create", throw=True)
 

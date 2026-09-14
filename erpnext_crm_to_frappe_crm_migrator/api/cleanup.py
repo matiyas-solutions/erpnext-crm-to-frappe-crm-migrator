@@ -128,6 +128,7 @@ def cleanup_source_data(confirm: str = "") -> dict:
 	"""Delete CRM-only source data. Requires `confirm='DELETE'` and the
 	guards (all tabs locked + at least one Succeeded run) to pass.
 	"""
+	frappe.only_for("System Manager")
 	frappe.has_permission(SETTINGS_DOCTYPE, "write", throw=True)
 
 	if confirm != "DELETE":

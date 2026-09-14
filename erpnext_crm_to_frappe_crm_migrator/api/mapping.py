@@ -511,6 +511,7 @@ def get_target_doctype_fields() -> dict:
 	doctypes — used by the client script to populate the Autocomplete
 	options on each tab's `target_field` column.
 	"""
+	frappe.has_permission(SETTINGS_DOCTYPE, "read", throw=True)
 	out: dict[str, list[str]] = {}
 	for source_dt in SOURCE_DOCTYPES:
 		target_dt = REVERSE_DOCTYPE_MAP.get(source_dt)

@@ -623,6 +623,7 @@ def get_migrator_details() -> dict:
 	(only assignment-style ToDos), so it doesn't live in ACTIVITY_SPECS but
 	is part of what the activity step does.
 	"""
+	frappe.has_permission(SETTINGS_DOCTYPE, "read", throw=True)
 	from erpnext_crm_to_frappe_crm_migrator.api.activity import ACTIVITY_SPECS
 
 	rows = [{"doctype": dt, "field": field_dt, "scope": ""} for (dt, field_dt, _nf) in ACTIVITY_SPECS]
